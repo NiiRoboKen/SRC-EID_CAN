@@ -7,7 +7,7 @@ Sender-Receiver-Command Expected ID CAN Protocol
 ## ID(29bit)
 
 ```plaintext
-|Receiver ID(8bit)|Sender ID(8bit)|Core command flag(1bit)|Command (12bit)|
+|Sender ID(8bit)|Receiver ID(8bit)|Core command flag(1bit)|Command (12bit)|
 ```
 
 パケットの拡張ID(29bit)内に受信,送信者ID 8bitずつと12bitのコマンドを含みます。
