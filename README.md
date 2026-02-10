@@ -1,6 +1,6 @@
 # SRC-EID CAN Protocol
 
-Sender-Receiver-Command CAN Protocol
+Sender-Receiver-Command Expected ID CAN Protocol
 
 新居浜高専ロボット研究部内で使用するCANプロトコル上の通信プロトコル。
 
