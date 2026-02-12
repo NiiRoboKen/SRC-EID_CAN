@@ -21,10 +21,10 @@ Core Command Flagが有効(1)である場合Core Commandと認識されます。
 
 |command|data|explain|
 |-------|----|-------|
-|GREET|0x000|起動通知|
-|POWEROFF|0x001|終了命令|
-|POWEROFF_NOTICE|0x002|正常終了通知|
-|REBOOT|0x003|再起動命令|
+|BOOT|0x000|起動命令|
+|BOOT_NOTICE|0x001|起動通知|
+|POWEROFF|0x002|終了命令|
+|POWEROFF_NOTICE|0x003|正常終了通知|
 |ERROR|0x004|異常通知|
 |GET_TYPE|0x005|型取得|
 
