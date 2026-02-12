@@ -35,17 +35,25 @@ Core Command Flagが無効(0)の場合Sub Commandと認識されます。
 
 0x000~0xFFFまでが使用可能です。
 
-## Data(8byte)
+## Payload(8byte)
 
 以下"任意に拡張可能"とはプロトコルを使用するノードの型毎での独自実装が可能であることを示します。
 
-### GREET(0x000)~REBOOT(0x004)
+### BOOT(0x000)~POWEROFF_NOTICE(0x003)
 
 ```plaintext
 |(Empty)|
 ```
 
 空データ。任意に拡張可能。
+
+### ERROR(0x004)
+
+```plaintext
+|Error code(1byte)|(Empty)|
+```
+
+1byteのエラーコードを含みます。残る7byteは任意に拡張可能です。
 
 ### GET_TYPE(0x005)
 
@@ -61,8 +69,8 @@ Core Command Flagが無効(0)の場合Sub Commandと認識されます。
 
 |type|ID|explain|
 |----|--|-------|
-|GCBRawMotor|0x0|汎用基板を使用したDuty比制御のモータ|
-|GCBSpeedControllableMotor|0x1|汎用基板を使用した速度制御モータ|
-|GCBServo|0x2|汎用基板を使用した角度制御モータ|
-|GCBRPMEncoder|0x3|汎用基板を使用した回転速度エンコーダ|
-|GCBAngleEncoder|0x4|汎用基板を使用した角度エンコーダ|
+|GCBRawMotor|0x00|汎用基板を使用したDuty比制御のモータ|
+|GCBSpeedControllableMotor|0x01|汎用基板を使用した速度制御モータ|
+|GCBServo|0x02|汎用基板を使用した角度制御モータ|
+|GCBRPMEncoder|0x03|汎用基板を使用した回転速度エンコーダ|
+|GCBAngleEncoder|0x04|汎用基板を使用した角度エンコーダ|
