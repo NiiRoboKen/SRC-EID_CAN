@@ -26,7 +26,8 @@ Core Command Flagが有効(1)である場合Core Commandと認識されます。
 |POWEROFF|0x002|終了命令|
 |POWEROFF_NOTICE|0x003|正常終了通知|
 |ERROR|0x004|異常通知|
-|GET_TYPE|0x005|型取得|
+|PING|0x005|疎通確認|
+|PONG|0x006|疎通応答|
 
 ### Sub Command
 
@@ -39,7 +40,7 @@ Core Command Flagが無効(0)の場合Sub Commandと認識されます。
 
 以下"任意に拡張可能"とはプロトコルを使用するノードの型毎での独自実装が可能であることを示します。
 
-### BOOT(0x000)~POWEROFF_NOTICE(0x003)
+### BOOT(0x000)~POWEROFF_NOTICE(0x003), PING(0x005), PONG(0x006)
 
 ```plaintext
 |(Empty)|
@@ -54,14 +55,6 @@ Core Command Flagが無効(0)の場合Sub Commandと認識されます。
 ```
 
 1byteのエラーコードを含みます。残る7byteは任意に拡張可能です。
-
-### GET_TYPE(0x005)
-
-```plaintext
-|Type(1byte)|(Empty)|
-```
-
-1byteのノードの型情報を含みます。残る7byteは任意に拡張可能です。
 
 ## Node type
 
