@@ -18,6 +18,19 @@ class Slave {
     void ping();
     void ping(uint8_t *payload, uint8_t payload_len);
 
+    enum class State {
+        GOING_TO_BED,
+        SLEEPING,
+        BOOTING,
+        BOOTED,
+        RECEIVING_PING,
+        RETURNED_PONG,
+        ERROR,
+        RUNNING
+    };
+    
+    State is();
+
     protected:
     CanDriver&  m_can_driver;
     uint8_t     m_slave_id;
