@@ -12,11 +12,8 @@ class Slave {
     Slave(CanDriver& can_driver, uint8_t master_id, uint8_t slave_id);
     void onReceive(twai_message_t& msg);
     void boot();
-    void boot(uint8_t *payload, uint8_t payload_len);
     void poweroff();
-    void poweroff(uint8_t *payload, uint8_t paylaod_len);
     void ping();
-    void ping(uint8_t *payload, uint8_t payload_len);
 
     enum class State {
         GOING_TO_BED,
@@ -43,6 +40,10 @@ class Slave {
     void send(bool core_command_flag, uint16_t command);
     void payload_write(uint8_t *payload, uint8_t payload_len, uint8_t payload_max_len);
     virtual void virtualOnReceive(twai_message_t& msg) = 0;
+
+    void boot(uint8_t *payload, uint8_t payload_len);
+    void poweroff(uint8_t *payload, uint8_t paylaod_len);
+    void ping(uint8_t *payload, uint8_t payload_len);
 };
 
 }
