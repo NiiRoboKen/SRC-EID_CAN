@@ -1,5 +1,12 @@
 #include "srceid_slave.hpp"
 
+namespace {
+    constexpr uint16_t BOOT_NOTICE     {0x1001};
+    constexpr uint16_t POWEROFF_NOTICE {0x1003};
+    constexpr uint16_t ERROR           {0x1004};
+    constexpr uint16_t PONG            {0x1006};
+}
+
 namespace NNCT {
 namespace SRCEID {
     
@@ -13,6 +20,21 @@ Slave::Slave(CanDriver& can_driver, uint8_t master_id, uint8_t slave_id) :
 void Slave::onReceive(twai_message_t& msg) {
     Identifier persed_id = perse_id(msg.identifier);
     if(persed_id.senderID != m_slave_id) return;
+    
+    if(persed_id.command >> 12) {
+        switch(persed_id.command) {
+            case BOOT_NOTICE:
+                break;
+            case POWEROFF_NOTICE:
+                break;
+            case ERROR:
+                break;
+            case PONG:
+                break;
+            default:
+                break;
+        }
+    }
     
     virtualOnReceive(msg);    
 }
