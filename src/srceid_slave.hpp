@@ -37,7 +37,7 @@ class Slave {
     uint8_t     m_tx_buf[8];
     uint8_t     m_tx_buf_len;
     
-    void send(bool core_command_flag, uint16_t command);
+    void send(uint16_t command);
     void payload_write(uint8_t *payload, uint8_t payload_len, uint8_t payload_max_len);
     virtual void virtualOnReceive(twai_message_t& msg) = 0;
 
