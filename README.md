@@ -7,34 +7,32 @@ Sender-Receiver-Command Expected ID CAN Protocol
 ## ID(29bit)
 
 ```plaintext
-|Sender ID(8bit)|Receiver ID(8bit)|Core command flag(1bit)|Command (12bit)|
+|Sender ID(8bit)|Receiver ID(8bit)|Command (13bit)|
 ```
 
-パケットの拡張ID(29bit)内に受信,送信者ID 8bitずつと12bitのコマンドを含みます。
+パケットの拡張ID(29bit)内に受信,送信者ID 8bitずつと13bitのコマンドを含みます。
 
-## Command(12bit)
+## Command(13bit)
 
 ### Core Command
 
-プロトコル共通の核となるコマンドです。
-Core Command Flagが有効(1)である場合Core Commandと認識されます。
+プロトコル共通のコマンドです。
+13bitのコマンドのうち0x1000以降はCore Command用の予約領域となります。
 
 |command|data|explain|
 |-------|----|-------|
-|BOOT|0x000|起動命令|
-|BOOT_NOTICE|0x001|起動通知|
-|POWEROFF|0x002|終了命令|
-|POWEROFF_NOTICE|0x003|正常終了通知|
-|ERROR|0x004|異常通知|
-|PING|0x005|疎通確認|
-|PONG|0x006|疎通応答|
+|BOOT|0x1000|起動命令|
+|BOOT_NOTICE|0x1001|起動通知|
+|POWEROFF|0x1002|終了命令|
+|POWEROFF_NOTICE|0x1003|正常終了通知|
+|ERROR|0x1004|異常通知|
+|PING|0x1005|疎通確認|
+|PONG|0x1006|疎通応答|
 
 ### Sub Command
 
 ノードの型毎の独自コマンドです。
-Core Command Flagが無効(0)の場合Sub Commandと認識されます。
-
-0x000~0xFFFまでが使用可能です。
+0x0000~0x0FFFまでが使用可能です。
 
 ## Payload(8byte)
 
