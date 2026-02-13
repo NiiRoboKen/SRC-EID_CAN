@@ -75,14 +75,17 @@ void Slave::payload_write(uint8_t *payload, uint8_t payload_len, uint8_t payload
 }
 
 void Slave::boot(uint8_t *payload, uint8_t payload_len) {
+    m_state = State::BOOTING;
     payload_write(payload, payload_len, 8);
     send(BOOT);
 }
 void Slave::poweroff(uint8_t *payload, uint8_t payload_len) {
+    m_state = State::GOING_TO_BED;
     payload_write(payload, payload_len, 8);
     send(POWEROFF);
 }
 void Slave::ping(uint8_t *payload, uint8_t payload_len) {
+    m_state = State::RECEIVING_PING;
     payload_write(payload, payload_len, 8);
     send(PING);
 }
