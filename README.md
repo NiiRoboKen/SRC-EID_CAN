@@ -53,15 +53,3 @@ Sender-Receiver-Command Expected ID CAN Protocol
 ```
 
 1byteのエラーコードを含みます。残る7byteは任意に拡張可能です。
-
-## Node type
-
-現行で想定されているノードの型情報です。
-
-|type|ID|explain|
-|----|--|-------|
-|GCBRawMotor|0x00|汎用基板を使用したDuty比制御のモータ|
-|GCBSpeedControllableMotor|0x01|汎用基板を使用した速度制御モータ|
-|GCBServo|0x02|汎用基板を使用した角度制御モータ|
-|GCBRPMEncoder|0x03|汎用基板を使用した回転速度エンコーダ|
-|GCBAngleEncoder|0x04|汎用基板を使用した角度エンコーダ|
