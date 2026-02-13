@@ -11,6 +11,9 @@ Slave::Slave(CanDriver& can_driver, uint8_t master_id, uint8_t slave_id) :
 }
 
 void Slave::onReceive(twai_message_t& msg) {
+    Identifier persed_id = perse_id(msg.identifier);
+    if(persed_id.senderID != m_slave_id) return;
+    
     virtualOnReceive(msg);    
 }
 
