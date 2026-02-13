@@ -20,6 +20,7 @@ class Slave {
 
     enum class State {
         GOING_TO_BED,
+        SLEPT,
         SLEEPING,
         BOOTING,
         BOOTED,
@@ -33,6 +34,7 @@ class Slave {
 
     protected:
     CanDriver&  m_can_driver;
+    State       m_state;
     uint8_t     m_slave_id;
     Identifier  m_persed_id;
     uint8_t     m_tx_buf[8];
